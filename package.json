@@ -1,6 +1,6 @@
 {
 	"name": "strip-instance",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Remove class instances from objects.",
 	"repository": "https://github.com/Richienb/strip-instance.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
