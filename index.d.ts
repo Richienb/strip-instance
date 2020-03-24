@@ -1,14 +1,23 @@
 /**
- * My awesome module.
- * @param input Lorem ipsum.
- * @param postfix Lorem ipsum.
+ * Remove class instances from objects.
+ * @param object The object to strip.
  * @example
  * ```
- * const theModule = require("the-module");
- * theModule("unicorns");
- * //=> 'unicorns & rainbows'
+ * const stripInstance = require("strip-instance");
+ *
+ * const someClass = new (class SomeClass {
+ * 	constructor() {
+ * 		this.value = "a";
+ * 	}
+ * })();
+ *
+ * console.log(someClass);
+ * //=> SomeClass { value: "a" }
+ *
+ * stripInstance(someClass);
+ * //=> { value: "a" }
  * ```
 */
-declare function theModule(input: string, { postfix }: { postfix?: string }): string;
+declare function stripInstance<T extends object>(object: T): T
 
-export = theModule;
+export = stripInstance

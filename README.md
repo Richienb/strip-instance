@@ -1,41 +1,39 @@
-# The module [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/the-module/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/the-module)
+# strip-instance [![Travis CI Build Status](https://img.shields.io/travis/com/Richienb/strip-instance/master.svg?style=for-the-badge)](https://travis-ci.com/Richienb/strip-instance)
 
-My awesome module.
+Remove class instances from objects.
 
-[![NPM Badge](https://nodei.co/npm/the-module.png)](https://npmjs.com/package/the-module)
+[![NPM Badge](https://nodei.co/npm/strip-instance.png)](https://npmjs.com/package/strip-instance)
 
 ## Install
 
 ```sh
-npm install the-module
+npm install strip-instance
 ```
 
 ## Usage
 
 ```js
-const theModule = require("the-module");
+const stripInstance = require("strip-instance");
 
-theModule("unicorns");
-//=> 'unicorns & rainbows'
+const someClass = new (class SomeClass {
+	constructor() {
+		this.value = "a";
+	}
+})();
+
+console.log(someClass);
+//=> SomeClass { value: "a" }
+
+stripInstance(someClass);
+//=> { value: "a" }
 ```
 
 ## API
 
-### theModule(input, options?)
+### stripInstance(object)
 
-#### input
+#### object
 
-Type: `string`
+Type: `object or class instance`
 
-Lorem ipsum.
-
-#### options
-
-Type: `object`
-
-##### postfix
-
-Type: `string`\
-Default: `rainbows`
-
-Lorem ipsum.
+The object to strip.

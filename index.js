@@ -1,7 +1,12 @@
 "use strict"
 
-module.exports = (input, { postfix = "rainbows" } = {}) => {
-	if (typeof input !== "string") throw new TypeError(`Expected a string, got ${typeof input}`)
+const mapObject = require("map-obj")
+const is = require("@sindresorhus/is")
 
-	return `${input} & ${postfix}`
+module.exports = (object) => {
+	is.assert.any([is.object, is.class], object)
+	return mapObject({ ...object }, (key, value) => {
+		if (is.class(value)) value = { ...value }
+		return [key, value]
+	}, { deep: true })
 }

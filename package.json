@@ -1,8 +1,8 @@
 {
-	"name": "the-module",
+	"name": "strip-instance",
 	"version": "0.0.0",
-	"description": "My awesome module.",
-	"repository": "https://github.com/Richienb/the-module.git",
+	"description": "Remove class instances from objects.",
+	"repository": "https://github.com/Richienb/strip-instance.git",
 	"author": "Richie Bendall <richiebendall@gmail.com>",
 	"license": "MIT",
 	"main": "index.js",
@@ -17,8 +17,17 @@
 		"lint": "xo",
 		"test": "yarn lint && ava"
 	},
-	"keywords": [],
-	"dependencies": {},
+	"keywords": [
+		"instance",
+		"class",
+		"object",
+		"strip"
+	],
+	"dependencies": {
+		"@sindresorhus/is": "^2.1.0",
+		"is-obj": "^2.0.0",
+		"map-obj": "^4.1.0"
+	},
 	"devDependencies": {
 		"ava": "^3.5.1",
 		"eslint-config-richienb": "^0.3.0",

@@ -1,13 +1,19 @@
 const test = require("ava")
-const theModule = require(".")
+const stripInstance = require(".")
+
+class NestedClass {
+	constructor() {
+		this.testValue = "Hello World!"
+	}
+}
+
+class TestClass {
+	constructor() {
+		this.testValue = "Hello World!"
+		this.nestedClass = new NestedClass()
+	}
+}
 
 test("main", (t) => {
-	t.throws(() => {
-		theModule(123)
-	}, {
-		instanceOf: TypeError,
-		message: "Expected a string, got number",
-	})
-
-	t.is(theModule("unicorns"), "unicorns & rainbows")
+	t.deepEqual(stripInstance(new TestClass()), { testValue: "Hello World!", nestedClass: { testValue: "Hello World!" } })
 })
